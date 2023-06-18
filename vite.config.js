@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: [
-        "/swiper",
-        "/Swiper/react"
+        "swiper",
+        "Swiper/react"
       ]}}
 })
