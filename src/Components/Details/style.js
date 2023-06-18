@@ -48,17 +48,18 @@ justify-content: center;
   >.Tags{
   margin-bottom: 24px;
   }
-
-  >button{
-  width: 131px;
-  height: 48px;
-  color: ${({theme})=>theme.COLORS.LIGHT_100};
-  background-color: ${({theme})=>theme.COLORS.TOMATO_100};
-  border: none;
-  border-radius: 5px;
-  font-family: 'Poppins';
-  font-size: 14px;
-  font-weight: 500;
+  >a{
+    >button{
+    width: 131px;
+    height: 48px;
+    color: ${({theme})=>theme.COLORS.LIGHT_100};
+    background-color: ${({theme})=>theme.COLORS.TOMATO_100};
+    border: none;
+    border-radius: 5px;
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 500;
+    }
   }
 }
 

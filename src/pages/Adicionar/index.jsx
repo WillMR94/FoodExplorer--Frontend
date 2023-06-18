@@ -13,6 +13,7 @@ import { useAuth  } from "../../hooks/auth";
 
 
 export function Adicionar(){
+  const [ search, setSearch]=useState('');
   const [ imgUrl, setImgUrl]=useState('');
   const [ title, setTitle]=useState('');
   const [ text, setText]=useState('');
@@ -22,6 +23,10 @@ export function Adicionar(){
   const [ type, setType]=useState('');
   //-----
   const {createMeal} = useAuth();
+
+  function SearchBar(r){
+    setSearch(r)
+  }
 
   function handleIngredients(){
     setIngredients(prevState => [...prevState, newIngredients]);
@@ -49,7 +54,7 @@ function handleCreate(){
 
 return(
 <Container>
-  <Header/>
+  <Header handleSearch={SearchBar}/>
   <Content>
     <ReturnButton className="arrowBack"/>
     <h1>Novo prato</h1>

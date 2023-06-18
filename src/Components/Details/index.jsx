@@ -4,8 +4,9 @@ import { OrderBar } from '../../Components/OrderBar'
 import { ReturnButton } from '../../Components/ReturnButton'
 import { api } from '../../services/api';
 import { useAuth } from '../../hooks/auth'
+import { Link,useNavigate } from 'react-router-dom'
 
-export function Details({title,text,price,ingredients,imgUrl,...rest}){
+export function Details({id,title,text,price,ingredients,imgUrl,...rest}){
   const { user } = useAuth();
   const { access } = user;
 
@@ -29,7 +30,7 @@ export function Details({title,text,price,ingredients,imgUrl,...rest}){
                   )
                 }</div>
             }
-            <button>Editar prato</button>
+            <Link to={`/edit/${id}`}><button>Editar prato</button></Link>
           </div>
         </div>
       </Container>

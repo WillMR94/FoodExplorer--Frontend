@@ -1,3 +1,4 @@
+import { useState, useEffect }  from "react";
 import { Container} from './style';
 import { Input } from '../Input';
 import { Logo,MenuSVG,OrderSVG,Logout } from '../../Assets/Icons/icons'
@@ -7,18 +8,27 @@ import { MenuMobile } from '../../Components/MenuMobile'
 import { Link,useNavigate } from 'react-router-dom'
 import { useAuth } from "../../hooks/auth"
 
-
-export function Header(){
+export function Header(props){
   const { logOut } = useAuth();
   const { user } = useAuth();
-  const { access } = user
-
+  const { access } = user;
+  const [ alo, setAlo]=useState('');
   const navigate = useNavigate();
+
 
   async function handleLogOut(){
     await logOut();
     navigate("/");
   }
+
+  function SearchBarMobile(r){
+    setAlo(r)
+  }
+
+  useEffect(() => {
+   
+ props.handleSearch(alo)
+  },[alo]);
 
   if(access === '1'){
     return(
@@ -36,7 +46,7 @@ export function Header(){
               </div>
             </li>
             <li className='hide search'>
-              <Input icon={SlMagnifier}  placeholder='Busque por pratos ou ingredientes'/>
+              <Input icon={SlMagnifier}  placeholder='Busque por pratos ou ingredientes' onChange={e => setAlo(e.target.value)}/>
             </li>
             <li className='newMeal hide'>
               <button>
@@ -49,15 +59,12 @@ export function Header(){
               </button>
             </li>
           </ul>
-          <MenuMobile/>
+          <MenuMobile handleSearchMobile={SearchBarMobile}/>
         </nav>
       </Container>
         )
 
   }else{
- 
-
-
 return(
 <Container>
   <nav>
@@ -70,7 +77,7 @@ return(
         <span>food explorer</span>
       </li>
       <li className='hide search'>
-        <Input icon={SlMagnifier}  placeholder='Busque por pratos ou ingredientes'/>
+        <Input icon={SlMagnifier}  placeholder='Busque por pratos ou ingredientes' onChange={e => setAlo(e.target.value)}/>
       </li>
       <li className='order'>
         <button>
@@ -85,12 +92,10 @@ return(
         </button>
       </li>
     </ul>
-    <MenuMobile/>
+    <MenuMobile handleSearchMobile={SearchBarMobile}/>
   </nav>
 </Container>
   )
 
-
 }
-
 }

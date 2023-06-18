@@ -13,6 +13,7 @@ import { useAuth } from '../../hooks/auth'
 
  
 export function Editar(){
+  const [ search, setSearch]=useState('');
   const navigate = useNavigate();
   const [ imgUrl, setImgUrl]=useState('');
   const [ title, setTitle]=useState('');
@@ -29,8 +30,11 @@ export function Editar(){
   function handleFile(event){
     const file = event.target.files[0];
     setImgUrl(file)
-    // console.log(file)
   };
+
+  function SearchBar(r){
+    setSearch(r)
+  }
 
   function handleDelet(){
     deletMeal(id);
@@ -89,7 +93,7 @@ export function Editar(){
 
 return(
 <Container >
-<Header/>
+<Header handleSearch={SearchBar}/>
 <Content>
 <ReturnButton className="arrowBack"/>
 <h1>Editar prato</h1>

@@ -7,6 +7,7 @@ import { Footer } from '../../Components/Footer';
 import { Details } from '../../Components/Details';
 
 export function Prato(){
+  const [ search, setSearch]=useState('');
   const [ imgUrl, setImgUrl]=useState('');
   const [ title, setTitle]=useState('');
   const [ text, setText]=useState('');
@@ -14,9 +15,13 @@ export function Prato(){
   const [ price, setPrice]=useState('');
   const {id} = useParams();
 
+  function SearchBar(r){
+    setSearch(r)
+  }
+
   useEffect(() => {
     async function dataSearch(){
-      try{g
+      try{
         const response = await api.get(`/meals/${id}`);
         const {showById} = response.data
         let {title,text,ingredients,price,imgUrl} = showById[0]
@@ -42,10 +47,11 @@ export function Prato(){
 
   return(
     <Container>
-      <Header/>
+      <Header handleSearch={SearchBar}/>
         <Content>
           <div>
             <Details
+            id={id}
             imgUrl={imgUrl}
             title={title}
             text={text}

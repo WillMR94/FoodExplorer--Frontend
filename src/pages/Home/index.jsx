@@ -1,7 +1,7 @@
 import { useState,useEffect,prevState} from "react";
 import { api } from '../../services/api';
 import { Container,Content,Section } from "./style";
-import { Header } from "../../Components/Header";
+import { Header } from "../../Components/Header/";
 import { Footer } from '../../Components/Footer';
 import { Card } from '../../Components/card'
 import { Miniature } from "../../Components/Miniature";
@@ -10,10 +10,15 @@ import { Slider,Slide } from '../../Components/Carrosel'
 
 
 export function Home(){
+  const [ search, setSearch]=useState('');
   const [ dataResponse, setDataResponse]=useState('');
   const [ meals, setMeals]=useState('');
   const [ desserts, setDesserts]=useState('');
-  const [ drinks, setSrinks]=useState('');
+  const [ drinks, setDrinks]=useState('');
+
+  function SearchBar(r){
+    setSearch(r)
+  }
 
   const settings={
     navigation:true,
@@ -38,12 +43,18 @@ export function Home(){
     }
   }
 
-
   useEffect(() => {
+
+
+    
     async function homeData(){
-      const response = await api.get(`/meals`);
+      if(!search){ const response = await api.get(`/meals`);
       const dados = response.data;
       setDataResponse(dados);
+    }else{
+     const response = await api.get(`/meals/search/${search}`);
+     const dados = response.data;
+     setDataResponse(dados);}
     }
 
     function filtered(){
@@ -52,18 +63,18 @@ export function Home(){
       let drinksfilter = (Object.values(dataResponse).filter(drink => drink.type === 3));
       setMeals(mealsfilter);
       setDesserts(dessertsfilter);
-      setSrinks(drinksfilter);
+      setDrinks(drinksfilter);
      }
 
     homeData();
     filtered()
     
-  },[dataResponse]);//
+  },[dataResponse,search]);
 
 
 return(
 <Container>
-<Header/>
+<Header handleSearch={SearchBar}/>
 <Content>
   <Card/>
   <Section className="mealClass">

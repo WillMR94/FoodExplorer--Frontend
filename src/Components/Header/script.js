@@ -1,18 +1,26 @@
-export function  ShowMenu(){
-  const menuButton=document.querySelector('.menuButton')
-  const menuMobile=document.querySelector('.menuMobileX')
-  const xButton=document.querySelector('.xButton')
-  const linkMobile=document.querySelector('.link')
-  const footer=document.querySelector('.footer')
-  
-    console.log("oi"),
-    xButton.classList.remove('hide')
-    menuButton.classList.add('hide')
-    menuMobile.classList.add('menuMobile')
-    menuMobile.classList.remove('hide')
-    menuMobile.classList.remove('menuMobileHide')
-    linkMobile.classList.remove('hide')
-    footer.classList.remove('hide')
+//--Script para mostrar o menu p versão mobile--//
+export function ShowMenu(access){
 
-   
-  }
+  const linkMobile=document.querySelector('.link');
+  const menuButton=document.querySelector('.menuButton');
+  const xButton=document.querySelector('.xButton');
+  const menuMobile=document.querySelector('.menuMobileX');
+  const footer=document.querySelector('.footer');
+  if(access === '1'){
+    linkMobile.classList.remove('hide');
+    xButton.classList.remove('hide');
+    menuButton.classList.add('hide');
+    menuMobile.classList.add('menuMobile');
+    menuMobile.classList.remove('hide');
+    menuMobile.classList.remove('menuMobileHide');
+    footer.classList.remove('hide');
+  }else{
+    //linkMobile.classList.remove('hide');
+    xButton.classList.remove('hide');
+    menuButton.classList.add('hide');
+    menuMobile.classList.add('menuMobile');
+    menuMobile.classList.remove('hide');
+    menuMobile.classList.remove('menuMobileHide');
+    footer.classList.remove('hide');
+  }  
+}

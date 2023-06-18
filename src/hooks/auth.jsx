@@ -37,7 +37,6 @@ function AuthProvider({ children }) {
     localStorage.removeItem("@FoodExplorer_user");
     setData({});
   }
-
   
   async function createMeal({title,text,imgUrl,price,ingredients,type}){
     
@@ -98,6 +97,7 @@ function AuthProvider({ children }) {
       }
     }
   }
+
 
 
 useEffect(()=>{
