@@ -8,5 +8,6 @@ export default defineConfig({
     rollupOptions: {
       external: [
         "swiper",
+        "Swiper/react"
       ]}}
 })
