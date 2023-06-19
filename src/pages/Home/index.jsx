@@ -43,34 +43,35 @@ export function Home(){
     }
   }
 
-  useEffect(() => {
-
-
-    
-    async function homeData(){
-      if(!search){ const response = await api.get(`/meals`);
+  async function homeData(){
+    if(search){ 
+      const response = await api.get(`/meals/search/${search}`);
       const dados = response.data;
       setDataResponse(dados);
     }else{
-     const response = await api.get(`/meals/search/${search}`);
-     const dados = response.data;
-     setDataResponse(dados);}
+      const response = await api.get(`/meals`);
+      const dados = response.data;
+      setDataResponse(dados);
     }
+  }
 
-    function filtered(){
-      let mealsfilter = (Object.values(dataResponse).filter(meal => meal.type === 1));
-      let dessertsfilter = (Object.values(dataResponse).filter(dessert => dessert.type === 2));
-      let drinksfilter = (Object.values(dataResponse).filter(drink => drink.type === 3));
-      setMeals(mealsfilter);
-      setDesserts(dessertsfilter);
-      setDrinks(drinksfilter);
-     }
+  function filtered(){
+    let mealsfilter = (Object.values(dataResponse).filter(meal => meal.type === 1));
+    let dessertsfilter = (Object.values(dataResponse).filter(dessert => dessert.type === 2));
+    let drinksfilter = (Object.values(dataResponse).filter(drink => drink.type === 3));
+    setMeals(mealsfilter);
+    setDesserts(dessertsfilter);
+    setDrinks(drinksfilter);
+   }
+  
 
-    homeData();
-    filtered()
-    
-  },[dataResponse,search]);
+  useEffect(() => {
+    homeData()
+  },[search]);
 
+  useEffect(() => {
+    filtered() 
+  },[dataResponse]);
 
 return(
 <Container>
