@@ -1,5 +1,5 @@
 import { Container} from './style';
-import {Swiper,SwiperSlide} from 'Swiper/react';
+import {Swiper,SwiperSlide} from 'swiper/react/swiper-react.js';
 import { Navigation,A11y} from 'swiper'
 import 'swiper/css';
 import 'swiper/css/navigation';
