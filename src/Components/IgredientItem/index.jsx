@@ -9,13 +9,13 @@ export function IgredientItem({isNew, value, onClick, ...rest}){
        type="text"
        value={value}
        readOnly={!isNew}
-       {...rest}/>
+       {...rest}
+       />
 
       <button
       type="button"
       onClick={onClick}
-      className={isNew ? 'button-add' : 'button-del'}
-      >
+      className={isNew ? 'button-add' : 'button-del'}>
         {isNew ? <FiPlus/> : <FiX/>}
       </button>
     </Container>

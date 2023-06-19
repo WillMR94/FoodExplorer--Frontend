@@ -12,7 +12,7 @@ export function Header(props){
   const { logOut } = useAuth();
   const { user } = useAuth();
   const { access } = user;
-  const [ alo, setAlo]=useState('');
+  const [ headerSearch, setHeaderSearch]=useState('');
   const navigate = useNavigate();
 
 
@@ -22,13 +22,13 @@ export function Header(props){
   }
 
   function SearchBarMobile(r){
-    setAlo(r)
+    setHeaderSearch(r)
   }
 
   useEffect(() => {
    
- props.handleSearch(alo)
-  },[alo]);
+ props.handleSearch(headerSearch)
+  },[headerSearch]);
 
   if(access === '1'){
     return(
@@ -46,7 +46,7 @@ export function Header(props){
               </div>
             </li>
             <li className='hide search'>
-              <Input icon={SlMagnifier}  placeholder='Busque por pratos ou ingredientes' onChange={e => setAlo(e.target.value)}/>
+              <Input icon={SlMagnifier}  placeholder='Busque por pratos ou ingredientes' onChange={e => setHeaderSearch(e.target.value)}/>
             </li>
             <li className='newMeal hide'>
               <button>
@@ -62,40 +62,38 @@ export function Header(props){
           <MenuMobile handleSearchMobile={SearchBarMobile}/>
         </nav>
       </Container>
-        )
-
+    )
   }else{
-return(
-<Container>
-  <nav>
-    <ul>
-      <li className='menu'>
-        <button className='menuButton' onClick={ShowMenu}><MenuSVG/></button>
-      </li>
-      <li className='logo'>
-        <Logo/>
-        <span>food explorer</span>
-      </li>
-      <li className='hide search'>
-        <Input icon={SlMagnifier}  placeholder='Busque por pratos ou ingredientes' onChange={e => setAlo(e.target.value)}/>
-      </li>
-      <li className='order'>
-        <button>
-          <OrderSVG/>
-          <span className='hide'>Pedidos (0)</span>
-          <span>0</span>
-        </button>
-      </li>
-      <li className='hide'>
-        <button onClick={handleLogOut}>
-        <Logout/>
-        </button>
-      </li>
-    </ul>
-    <MenuMobile handleSearchMobile={SearchBarMobile}/>
-  </nav>
-</Container>
-  )
-
-}
+    return(
+      <Container>
+        <nav>
+          <ul>
+            <li className='menu'>
+              <button className='menuButton' onClick={ShowMenu}><MenuSVG/></button>
+            </li>
+            <li className='logo'>
+              <Logo/>
+              <span>food explorer</span>
+            </li>
+            <li className='hide search'>
+              <Input icon={SlMagnifier}  placeholder='Busque por pratos ou ingredientes' onChange={e => setHeaderSearch(e.target.value)}/>
+            </li>
+            <li className='order'>
+              <button>
+                <OrderSVG/>
+                <span className='hide'>Pedidos (0)</span>
+                <span>0</span>
+              </button>
+            </li>
+            <li className='hide'>
+              <button onClick={handleLogOut}>
+              <Logout/>
+              </button>
+            </li>
+          </ul>
+          <MenuMobile handleSearchMobile={SearchBarMobile}/>
+        </nav>
+      </Container>
+    )
+  }
 }

@@ -10,7 +10,8 @@ export const Slide=SwiperSlide
 
 export function Slider({settings,children,...rest}){
   return(
-  <Container>
-<Swiper modules={[Navigation, A11y]} {...settings}>{children}</Swiper>
- </Container> 
-    )}
+    <Container>
+      <Swiper modules={[Navigation, A11y]} {...settings}>{children}</Swiper>
+    </Container> 
+  )
+}

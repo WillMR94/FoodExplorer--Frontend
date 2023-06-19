@@ -8,29 +8,27 @@ export function Quantity(){
 function plus(){
   if(quantity === 99){
     alert('pedido maximo: 99 pratos')
+  }else{
+    setquantity(quantity+1)
   }
-  else{
-  setquantity(quantity+1)
-  }}
+}
 
- function  subtract(){
+function  subtract(){
   if(quantity <= 1){
     alert('pedido mínimo: 01 prato')
+  }else{
+    setquantity(quantity-1)
   }
-  else{
-  setquantity(quantity-1)
-  }}
+}
 
   return(
-<Container>
-<div className='controls'>
-<button className="subtract" onClick={subtract}><SubtractSVG/></button>
-<span className="quantity">{('0'+ quantity).slice(-2)}</span>
-<button className="plus" onClick={plus}><PlusSVG/></button>
-</div>
-<button className="orderButton">
-<span className="orderValue">incluir</span>
-</button>
-</Container>
+    <Container>
+      <div className='controls'>
+        <button className="subtract" onClick={subtract}><SubtractSVG/></button>
+        <span className="quantity">{('0'+ quantity).slice(-2)}</span>
+        <button className="plus" onClick={plus}><PlusSVG/></button>
+      </div>
+      <button className="orderButton"><span className="orderValue">incluir</span></button>
+    </Container>
   )
 }
