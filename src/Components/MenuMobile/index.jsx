@@ -5,7 +5,7 @@ import { Link,useNavigate } from 'react-router-dom'
 import { SlMagnifier } from 'react-icons/sl';
 import { XSVG } from '../../Assets/Icons/icons'
 import { Footer } from '../../Components/Footer'
-//import { HideMenu } from './script'
+import { HideMenuAdmin,HideMenuUser } from './script'
 import { useAuth } from '../../hooks/auth'
 
 export function MenuMobile(props){
@@ -14,29 +14,6 @@ export function MenuMobile(props){
   const { access } = user
   const [ seachMobilee, setSeachMobilee]=useState('');
   const navigate = useNavigate();
-
-  function HideMenu(){
-    const linkMobile=document.querySelector('.link');
-    const menuButton=document.querySelector('.menuButton');
-    const xButton=document.querySelector('.xButton');
-    const menuMobile=document.querySelector('.menuMobileX');
-    const footer=document.querySelector('.footer');
-    if(access === '1'){
-      linkMobile.classList.add('hide');
-      xButton.classList.add('hide');
-      menuButton.classList.remove('hide');
-      menuMobile.classList.remove('menuMobile');
-      menuMobile.classList.add('menuMobileHide');
-      footer.classList.add('hide');
-    }else{
-      //linkMobile.classList.add('hide');
-      xButton.classList.add('hide');
-      menuButton.classList.remove('hide');
-      menuMobile.classList.remove('menuMobile');
-      menuMobile.classList.add('menuMobileHide');
-      footer.classList.add('hide');
-    }
-  }
 
   async function handleLogOut(){
     await logOut();
@@ -52,7 +29,7 @@ export function MenuMobile(props){
       <Container>
         <div className='menuMobileX hide'>
           <div>
-            <button className='xButton' onClick={HideMenu}><XSVG/></button>
+            <button className='xButton' onClick={HideMenuAdmin}><XSVG/></button>
             <span>Menu</span>
           </div>
           <div>
@@ -74,7 +51,7 @@ export function MenuMobile(props){
       <Container>
         <div className='menuMobileX hide'>
           <div>
-            <button className='xButton' onClick={HideMenu}><XSVG/></button>
+            <button className='xButton' onClick={HideMenuUser}><XSVG/></button>
             <span>Menu</span>
           </div>
           <div>

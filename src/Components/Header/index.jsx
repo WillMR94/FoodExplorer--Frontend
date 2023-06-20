@@ -3,7 +3,7 @@ import { Container} from './style';
 import { Input } from '../Input';
 import { Logo,MenuSVG,OrderSVG,Logout } from '../../Assets/Icons/icons'
 import { SlMagnifier } from 'react-icons/sl';
-import { ShowMenu } from './script'
+import { ShowMenuAdmin,ShowMenuUser } from './script'
 import { MenuMobile } from '../../Components/MenuMobile'
 import { Link,useNavigate } from 'react-router-dom'
 import { useAuth } from "../../hooks/auth"
@@ -36,7 +36,7 @@ export function Header(props){
         <nav>
           <ul>
             <li className='menu'>
-              <button className='menuButton' onClick={ShowMenu}><MenuSVG/></button>
+              <button className='menuButton' onClick={ShowMenuAdmin}><MenuSVG/></button>
             </li>
             <li className='logo'>
               <Logo/>
@@ -69,7 +69,7 @@ export function Header(props){
         <nav>
           <ul>
             <li className='menu'>
-              <button className='menuButton' onClick={ShowMenu}><MenuSVG/></button>
+              <button className='menuButton' onClick={ShowMenuUser}><MenuSVG/></button>
             </li>
             <li className='logo'>
               <Logo/>
